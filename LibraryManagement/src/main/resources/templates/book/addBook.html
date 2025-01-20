@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krijo Libër</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .form-container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .btn-save {
+            background-color: #28a745;
+            border: none;
+        }
+        .btn-save:hover {
+            background-color: #218838;
+        }
+        .btn-cancel {
+            background-color: #6c757d;
+            border: none;
+        }
+        .btn-cancel:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container my-5">
+    <!-- Header -->
+    <header class="text-center mb-4">
+        <h2>Krijo Libër të Ri</h2>
+        <p class="text-muted">Plotësoni të dhënat për të shtuar një libër të ri në sistemin e bibliotekës.</p>
+    </header>
+
+    <!-- Form Container -->
+    <div class="form-container mx-auto col-md-6">
+        <form action="/books/addBook" method="post">
+            <div class="mb-3">
+                <label for="title" class="form-label">Titulli</label>
+                <input type="text" class="form-control" id="title" name="title" placeholder="Shkruani titullin e librit" required>
+            </div>
+            <div class="mb-3">
+                <label for="author" class="form-label">Autori</label>
+                <select class="form-select" id="author" name="author" required>
+                    <option th:each="author : ${authors}" th:value="${author.id}" th:text="${author.name} + ' ' + ${author.surname}"></option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="year" class="form-label">Viti</label>
+                <input type="number" class="form-control" id="year" name="year" placeholder="Shkruani vitin e botimit" required>
+            </div>
+            <div class="mb-3">
+                <label for="isbn" class="form-label">ISBN</label>
+                <input type="text" class="form-control" id="isbn" name="isbn" placeholder="Shkruani ISBN e librit" required>
+            </div>
+            <div class="mb-3">
+                <label for="quantity" class="form-label">Sasia</label>
+                <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Shkruani numrin e kopjeve" required>
+            </div>
+            <button type="submit" class="btn btn-success btn-save">Ruaj Librin</button>
+            <a href="/static" class="btn btn-secondary btn-cancel">Anulo</a>
+        </form>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menaxhimi i Autorëve</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .header-text {
+            color: #343a40;
+        }
+        .btn-custom {
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="container my-5">
+    <h2 class="text-center header-text">Menaxhimi i Autorëve</h2>
+
+    <!-- Formë Kërkimi -->
+    <form id="searchForm" action="/authors/list" method="get" class="mb-4">
+        <div class="row">
+            <div class="col-md-4">
+                <select name="searchBy" class="form-select" required>
+                    <option value="name" th:selected="${searchBy == 'name'}">Kërko nga Emri</option>
+                    <option value="surname" th:selected="${searchBy == 'surname'}">Kërko nga Mbiemri</option>
+                    <option value="email" th:selected="${searchBy == 'email'}">Kërko nga Email</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <input type="text" name="searchText" class="form-control"
+                       placeholder="Shkruani kërkimin tuaj" th:value="${searchText}" required />
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary w-100">Kërko</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Linke për Shtim dhe Home -->
+    <div class="mb-3">
+        <a href="/authors/addAuthor" class="btn btn-success btn-custom">Shto Autor të Ri</a>
+        <a href="/" class="btn btn-secondary btn-custom">Faqja Kryesore</a>
+    </div>
+
+    <!-- Nuk ka Rezultate -->
+    <div th:if="${isEmpty}" class="text-center text-muted">
+        <p>Nuk u gjetën autorë për "<span th:text="${searchText}"></span>" në "<span th:text="${searchBy}"></span>".</p>
+    </div>
+
+    <!-- Tabela e Autorëve -->
+    <div th:if="${!isEmpty}">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Emri</th>
+                <th>Mbiemri</th>
+                <th>Email</th>
+                <th>Telefoni</th>
+                <th>Shtetësia</th>
+                <th>Biografia</th>
+                <th>Veprime</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="author : ${authors}">
+                <td th:text="${author.id}"></td>
+                <td th:text="${author.name}"></td>
+                <td th:text="${author.surname}"></td>
+                <td th:text="${author.email}"></td>
+                <td th:text="${author.phone}"></td>
+                <td th:text="${author.nationality}"></td>
+                <td th:text="${author.biography}"></td>
+                <td>
+                    <a th:href="@{/authors/delete/{id}(id=${author.id})}" class="btn btn-danger btn-sm btn-custom">Fshi</a>
+                    <a th:href="@{/authors/update/{id}(id=${author.id})}" class="btn btn-warning btn-sm btn-custom">Ndrysho</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

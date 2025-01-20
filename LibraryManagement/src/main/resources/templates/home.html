@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteka - Faqja Kryesore</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            transition: 0.3s ease;
+        }
+        .header-text {
+            color: #343a40;
+        }
+        .footer {
+            background-color: #343a40;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Biblioteka</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Faqja Kryesore</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/authors/list}">Autoret</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/books/list}">Librat</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/students/list}">Studentët</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/loans/list}">Huazimet</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="my-5 text-center">
+        <h1 class="header-text">Sistemi i Menaxhimit të Bibliotekës</h1>
+        <p class="lead">Mirësevini në platformën tonë për menaxhimin e librave, studentëve dhe huazimeve.</p>
+    </header>
+
+    <!-- Menu Section -->
+    <section class="my-5">
+        <div class="row text-center">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Menaxho Autoret</h5>
+                        <p class="card-text">Shto, përditëso ose fshi autoret nga koleksioni i bibliotekës.</p>
+                        <button class="btn btn-primary" th:onclick="'location.href=\'/authors/list\''">Shiko Autoret</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Menaxho Librat</h5>
+                        <p class="card-text">Shto, përditëso ose fshi libra nga koleksioni i bibliotekës.</p>
+                        <button class="btn btn-primary" th:onclick="'location.href=\'/books/list\''">Shiko Librat</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Menaxho Studentët</h5>
+                        <p class="card-text">Administroni informacionin e studentëve të regjistruar në bibliotekë.</p>
+                        <button class="btn btn-secondary" th:onclick="'location.href=\'/students/list\''">Shiko Studentët</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Menaxho Huazimet</h5>
+                        <p class="card-text">Monitoroni dhe menaxhoni procesin e huazimit të librave.</p>
+                        <button class="btn btn-danger" th:onclick="'location.href=\'/loans/list\''">Shiko Huazimet</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-4">
+        <div class="container text-center">
+            <p>&copy; 2025 Sistemi i Menaxhimit të Bibliotekës. Të gjitha të drejtat janë të rezervuara.</p>
+        </div>
+    </footer>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

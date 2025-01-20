@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Përditëso Autorin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .form-label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container my-5">
+    <h2 class="text-center mb-4">Përditëso Autorin</h2>
+    <form th:action="@{/authors/update/{id}(id=${author.id})}" th:object="${author}" method="post">
+        <input type="hidden" name="id" th:value="${author.id}" />
+
+        <div class="mb-3">
+            <label for="name" class="form-label">Emri</label>
+            <input type="text" class="form-control" id="name" name="name" th:value="${author.name}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="surname" class="form-label">Mbiemri</label>
+            <input type="text" class="form-control" id="surname" name="surname" th:value="${author.surname}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="birthday" class="form-label">Ditëlindja</label>
+            <input type="date" class="form-control" id="birthday" name="birthday"
+                   th:value="${author.birthday}">
+        </div>
+
+
+        <div class="mb-3">
+            <label for="age" class="form-label">Mosha</label>
+            <input type="number" class="form-control" id="age" name="age" th:value="${author.age}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="nrOfBooks" class="form-label">Numri i Librave</label>
+            <input type="number" class="form-control" id="nrOfBooks" name="nrOfBooks" th:value="${author.nrOfBooks}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" th:value="${author.email}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="phone" class="form-label">Telefoni</label>
+            <input type="tel" class="form-control" id="phone" name="phone" th:value="${author.phone}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="nationality" class="form-label">Kombësia</label>
+            <input type="text" class="form-control" id="nationality" name="nationality" th:value="${author.nationality}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="biography" class="form-label">Biografia</label>
+            <textarea class="form-control" id="biography" name="biography" rows="3" required th:text="${author.biography}"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="gender" class="form-label">Gjinia</label>
+            <select class="form-select" id="gender" name="gender" required>
+                <option value="Male" th:selected="${author.gender == 'Male'}">Mashkull</option>
+                <option value="Female" th:selected="${author.gender == 'Female'}">Femër</option>
+                <option value="Other" th:selected="${author.gender == 'Other'}">Tjetër</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="deathDate" class="form-label">Data e Vdekjes</label>
+            <input type="date" class="form-control" id="deathDate" name="deathDate"
+                   th:value="${author.deathDate}">
+        </div>
+
+
+        <div class="mb-3">
+            <label for="website" class="form-label">Faqja e Internetit</label>
+            <input type="url" class="form-control" id="website" name="website" th:value="${author.website}">
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Përditëso</button>
+            <a href="/authors/list" class="btn btn-secondary">Anulo</a>
+        </div>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
