@@ -12,6 +12,7 @@ public class Book {
         private int year;
         private int quantity;
         private int available;
+        private int borrowed;
         @ManyToOne
         @JoinColumn(name = "author_id")
         private Author author;
@@ -19,13 +20,14 @@ public class Book {
     public Book() {
     }
     
-    public Book(Long id, String title, String isbn, int year, int quantity, int available, Author author) {
+    public Book(Long id, String title, String isbn, int year, int quantity, int available,int borrowed,Author author) {
         this.id = id;
         this.title = title;
         this.isbn = isbn;
         this.year = year;
         this.quantity = quantity;
         this.available = available;
+        this.borrowed = borrowed;
         this.author = author;
     }
     
@@ -77,6 +79,14 @@ public class Book {
         this.available = available;
     }
     
+    public int getBorrowed() {
+        return borrowed;
+    }
+    
+    public void setBorrowed(int borrowed) {
+        this.borrowed = borrowed;
+    }
+    
     public Author getAuthor() {
         return author;
     }
@@ -94,6 +104,7 @@ public class Book {
                 ", year=" + year +
                 ", quantity=" + quantity +
                 ", available=" + available +
+                ", borrowed=" + borrowed +
                 ", author=" + author +
                 '}';
     }

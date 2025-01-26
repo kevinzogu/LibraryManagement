@@ -7,7 +7,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #f8f9fa;
+            background: url("/img/backgound.jpg") no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-direction: column;
         }
         .form-container {
             background-color: #ffffff;
@@ -74,8 +82,8 @@
             <div class="mb-3">
                 <label for="status" class="form-label">Statusi</label>
                 <select class="form-select" id="status" name="status" required>
-                    <option value="Borrowed" th:selected="${loan.status == 'Huazuar'}">I Huazuar</option>
-                    <option value="Returned" th:selected="${loan.status == 'Kthyer'}">I Kthyer</option>
+                    <option value="Borrowed" th:selected="${loan.status == 'Borrowed'}">Huazuar</option>
+                    <option value="Returned" th:selected="${loan.status == 'Returned'}">Kthyer</option>
                 </select>
             </div>
 

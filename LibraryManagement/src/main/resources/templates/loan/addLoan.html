@@ -7,7 +7,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #f8f9fa;
+            background: url("/img/backgound.jpg") no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-direction: column;
         }
         .form-container {
             background-color: #ffffff;
@@ -43,6 +51,7 @@
     <!-- Form Container -->
     <div class="form-container mx-auto col-md-6">
         <form action="/loans/addLoan" method="post">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
             <div class="mb-3">
                 <label for="student" class="form-label">Studenti</label>
                 <select class="form-select" id="student" name="student" required>
@@ -68,8 +77,8 @@
             <div class="mb-3">
                 <label for="status" class="form-label">Statusi</label>
                 <select class="form-select" id="status" name="status" required>
-                    <option value="Huazuar">Huazuar</option>
-                    <option value="Kthyer">Kthyer</option>
+                    <option value="Borrowed">Huazuar</option>
+                    <option value="Returned">Kthyer</option>
                 </select>
             </div>
             <button type="submit" class="btn btn-success btn-save">Ruaj Huazimin</button>
