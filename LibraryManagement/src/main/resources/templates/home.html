@@ -66,8 +66,7 @@
                             </div>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Profili</a></li>
-                            <li><a class="dropdown-item" href="#">Cilësimet</a></li>
+                            <li><a class="dropdown-item" th:href="@{/users/updateUser/{username}(username=${username})}">Cilësimet</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li>
                                 <form th:action="@{/logout}" method="post" class="m-0">
